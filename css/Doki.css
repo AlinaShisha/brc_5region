@@ -1,0 +1,46 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #0000005c;
+    color: rgb(255, 0, 0);
+    font-family: Georgia,
+    serif;
+}
+
+body {
+    background: #000 url("../img/BRC.png");
+    color: white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain cover;
+    font-size: 12pt;
+    text-indent: 15px;
+    font-family: Georgia,
+    serif;
+}
+.navbar-inverse {
+    background-color: rgba(46, 44, 44, 0.723);
+    font-size: larger;
+
+    border: 0px solid rgba(255, 255, 255, 0);
+}
+.panele2 {
+    background: rgba(82, 82, 82, 0.523);
+    border-radius: 15px;
+}
+
+.fakeimg {
+    height: 200px;
+    background: rgba(170, 170, 170, 0.734);
+}
+.scrollup {
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    display: none;
+    text-indent: -9999px;
+    background: url('../img/icon_top.png');
+}

@@ -1,0 +1,158 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #00000000;
+    color: rgb(255, 0, 0);
+    font-family: Georgia;
+    
+}
+
+body {
+    background: url("../img/BRC.png");
+    color: white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:contain cover;
+    font-size: 12pt;
+    font-family: Georgia;
+    
+}
+
+.navbar-inverse {
+    background-color: rgba(46, 44, 44, 0.723);
+font-size:larger;
+}
+
+@media (min-width: 768px) 
+{.navbar {
+    border-radius: 0px;
+    }
+}
+
+.navbar {
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 10px;
+    border: 0px solid transparent;
+}
+
+.panele{
+    background: rgba(55, 55, 55, 0.6);
+    border-radius: 15px;
+}
+.panele2{
+    background: rgba(82, 82, 82, 0.7);
+    border-radius: 15px;
+}
+.panele3 {
+    background: rgba(82, 82, 82, 0.7);
+    border-radius: 15px;
+}
+
+.fakeimg {
+    height: 150px;
+    background: rgba(170, 170, 170, 0.734);
+}
+.fa {
+    padding: 5px;
+    font-size: 30px;
+    text-decoration: none;
+    margin: 2px 2px;
+    
+}
+
+.fa:hover {
+    opacity: 0.5;
+    color: rgb(255, 0, 0);
+    transition: all 500ms ease;
+}
+
+.fa-instagram {
+    
+    color: white;
+}
+
+.fa-youtube {
+    
+    color: white;
+}
+
+.fa-telegram {
+    
+    color: white
+}
+.calendar {
+    border: 0px solid #000000;
+    border-collapse: collapse;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+/* Заголовок */
+.calendar th {
+    text-align: center;
+    width: 30px;
+    height: 45px;
+    color: #000000;
+    font-weight: 600;
+    background: #fffdfd90;
+}
+
+/* Заголовок праздника */
+.calendar th.holiday {
+    color: #FF0000;
+}
+
+/* Ячейка дня */
+.calendar td {
+    width: 30px;
+    height: 45px;
+    background:rgb(185, 177, 177, 0.575);
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Затемненный день */
+.calendar td.grayed {
+    background: rgba(185, 177, 177, 0.575);
+}
+
+.calendar td.disabled {
+    filter: alpha(opacity=30);
+    cursor: not-allowed !important;
+}
+
+/* Выбранный день */
+.calendar td.selected {
+    background: #FF0000;
+    color: #000000;
+}
+
+/* Праздничный день */
+.calendar td.holiday {
+    color: #FF0000;
+}
+
+/* Надпись где навигация */
+.calendar td.navigation {
+    border: 0px none !important;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: default;
+    padding: 2px 0 2px 0;
+}
+
+/* Кнопки навигации */
+.calendar td.navigation1 {
+    border: 0px none !important;
+    font-size: 17px;
+    color:#000
+}
+
+.calendar td.navigation1:hover {
+    color: #FF0000;
+}
