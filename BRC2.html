@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>BRC</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/BRC.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Berezino Racing Club</h1> 
+        </div>
+        
+
+        <div class="container">
+            <div class="row">
+                <div class=" text-center">
+                    <div class="col-sm-3">
+                        <div class="panele3">
+                            <br>
+                            <nav class="navbar navbar-inverse">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <div class="collapse navbar-collapse" id="myNavbar">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="Galer.html">Галерея</a></li>
+                                            <li><a href="Doki.html">Документы</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            
+                            <h3>Важно!</h3>
+                            <br>
+                            <img src="img/audi.png" height="90%" width="90%">
+                            <p>@brc_5region</p>
+                            <p>В мае состоится открытие нового, летнего сезона гонок. Вся информация про время и место сходки появится в
+                                ближайшее время. Ждите!!!</p>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panele">
+                            <br>
+                            <h2>Главная страница</h2>
+                            <br>
+                            <img src="img/BRC2.png" height="90%" width="90%" >
+                            <p>@brc_5region</p>
+                            <p>Данный клуб был образован в целях популизации уличных гонок.
+                            Здесь вы можете оставить свои заявки для участия в гонках.
+                            Посмотреть даты ближайших сходок, увидеть полную информацию о победителях и их авто.</p>
+                            <br>
+                            <video height="90%" width="90%" controls="controls" autoplay="autoplay" loop="loop">
+                                <source src="img/BRC.MOV">
+                            </video>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="panele3">
+                            <br>
+                            <h4>Календарь мероприятий</h4>
+                            <br>
+                            <div id="calendar_table"></div>
+                            <br>
+                            <ul class="nav nav-pills nav-stacked">
+                                <div class=" text-center">
+                                    <h4>Вы можете найти нас в </h4>
+                                    <a href="https://www.youtube.com/channel/UC6tlSET-QBueD0ZnUWj6QBA" class="fa fa-youtube"></a>
+                                    <a href="https://www.instagram.com/brc_5region/" class="fa fa-instagram"></a>
+                                    <a href="https://t.me/joinchat/fvBSo7fPre9iNjcy" class="fa fa-telegram"></a>
+                                </div>
+                            </ul>
+                            <hr class="hidden-sm hidden-md hidden-lg">
+                            <br>
+                        </div>
+                        
+                    </div>    
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+        $(document).ready(function () {
+            calendar = {};
+                // Названия месяцев
+            calendar.monthName = [
+                'Январь', 'Февраль', 'Март', 'Апрель',
+                'Май', 'Июнь', 'Июль', 'Август',
+                'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+            ];
+                // Названия дней недели
+            calendar.dayName = [
+                'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'
+            ];
+
+                // Выбранная дата
+            calendar.selectedDate = {
+                'Day': null,
+                'Month': null,
+                'Year': null
+            };
+            calendar.lockDate = {
+                'Day': null,
+                'Month': null,
+                'Year': null
+            };
+
+            // ID элемента для размещения календарика
+            calendar.element_id = null;
+
+            // Выбор даты
+            calendar.selectDate = function (day, month, year) {
+                calendar.selectedDate = {
+                    'Day': day,
+                    'Month': month,
+                    'Year': year
+                };
+                calendar.drawCalendar(month, year);
+            }
+
+            // Отрисовка календарика на выбранный месяц и год
+            calendar.drawCalendar = function (month, year) {
+                var tmp = '';
+                tmp += '<table class="calendar" cellspacing="0" cellpadding="0">';
+
+                // Месяц и навигация
+                tmp += '<tr>';
+                tmp += '<td class="navigation1" ' +
+                    'onclick="calendar.drawCalendar(' + (month > 1 ? (month - 1) : 12) +
+                    ',' + (month > 1 ? year : (year - 1)) + ');">◄<\/td>';
+                tmp += '<td colspan="5" class="navigation" ' +
+                    'onclick="calendar.drawCalendar(' +
+                    calendar.selectedDate.Month + ',' +
+                    calendar.selectedDate.Year + ');">' +
+                    calendar.monthName[(month - 1)] + ' - ' + year + '<\/td>';
+                tmp += '<td class="navigation1" ' +
+                    'onclick="calendar.drawCalendar(' + (month < 12 ? (month + 1) : 1) +
+                    ',' + (month < 12 ? year : (year + 1)) + ');">►<\/td>';
+                tmp += '<\/tr>';
+
+                // Шапка таблицы с днями недели
+                tmp += '<tr>';
+                tmp += '<th>' + calendar.dayName[0] + '<\/th>';
+                tmp += '<th>' + calendar.dayName[1] + '<\/th>';
+                tmp += '<th>' + calendar.dayName[2] + '<\/th>';
+                tmp += '<th>' + calendar.dayName[3] + '<\/th>';
+                tmp += '<th>' + calendar.dayName[4] + '<\/th>';
+                tmp += '<th class="holiday">' + calendar.dayName[5] + '<\/th>';
+                tmp += '<th class="holiday">' + calendar.dayName[6] + '<\/th>';
+                tmp += '<\/tr>';
+
+                // Количество дней в месяце
+                var total_days = 32 - new Date(year, (month - 1), 32).getDate();
+                // Начальный день месяца
+                var start_day = new Date(year, (month - 1), 1).getDay();
+                if (start_day == 0) { start_day = 7; }
+                start_day--;
+                // Количество ячеек в таблице
+                var final_index = Math.ceil((total_days + start_day) / 7) * 7;
+
+                var day = 1;
+                var index = 0;
+                do {
+                    // Начало строки таблицы
+                    if (index % 7 == 0) {
+                        tmp += '<tr>';
+                    }
+                    // Пустые ячейки до начала месяца или после окончания
+                    if ((index < start_day) || (index >= (total_days + start_day))) {
+                        tmp += '<td class="grayed"> <\/td>';
+                    } else {
+                        var stamp_fix = '';
+                        var stamp_cur = '';
+                        if (day < 10) { stamp_fix = '0' + day + stamp_fix; } else { stamp_fix = day + stamp_fix; }
+                        if (month < 10) { stamp_fix = '0' + month + stamp_fix; } else { stamp_fix = month + stamp_fix; }
+                        stamp_fix = year + stamp_fix;
+                        if (calendar.lockDate.Day < 10) { stamp_cur = '0' + calendar.lockDate.Day + stamp_cur; } else { stamp_cur = calendar.lockDate.Day + stamp_cur; }
+                        if (calendar.lockDate.Month < 10) { stamp_cur = '0' + calendar.lockDate.Month + stamp_cur; } else { stamp_cur = calendar.lockDate.Month + stamp_cur; }
+                        stamp_cur = calendar.lockDate.Year + stamp_cur;
+                        stamp_fix = parseInt(stamp_fix);
+                        stamp_cur = parseInt(stamp_cur);
+                        if (stamp_fix < stamp_cur) {
+                            var class_name = '';
+                            // Праздничный день
+                            if (index % 7 == 6 || index % 7 == 5) {
+                                class_name = 'holiday';
+                            }
+                            // Ячейка с датой
+                            tmp += '<td class="disabled ' + class_name + '">' + day + '<\/td>';
+                            day++;
+                        } else {
+                            var class_name = '';
+                            // Выбранный день
+                            if (calendar.selectedDate.Day == day &&
+                                calendar.selectedDate.Month == month &&
+                                calendar.selectedDate.Year == year) {
+                                class_name = 'selected';
+                            }
+                            // Праздничный день
+                            else if (index % 7 == 6 || index % 7 == 5) {
+                                class_name = 'holiday';
+                            }
+                            // Ячейка с датой
+                            tmp += '<td class="' + class_name + '" ' +
+                                'onclick="calendar.selectDate(' +
+                                day + ',' + month + ',' + year + ');">' + day + '<\/td>';
+                            day++;
+                        }
+                    }
+                    // Конец строки таблицы
+                    if (index % 7 == 6) {
+                        tmp += '<\/tr>';
+                    }
+                    index++;
+                }
+                while (index < final_index);
+
+                tmp += '<\/table>';
+
+                // Вставить таблицу календарика на страницу
+                var el = document.getElementById(calendar.element_id);
+                if (el) {
+                    el.innerHTML = tmp;
+                }
+            }
+
+            // ID элемента для размещения календарика
+            calendar.element_id = 'calendar_table';
+
+            // По умолчанию используется текущая дата
+            calendar.selectedDate = {
+                'Day': new Date().getDate(),
+                'Month': parseInt(new Date().getMonth()) + 1,
+                'Year': new Date().getFullYear()
+            };
+            calendar.lockDate = {
+                'Day': new Date().getDate(),
+                'Month': parseInt(new Date().getMonth()) + 1,
+                'Year': new Date().getFullYear()
+            }
+
+            // Нарисовать календарик
+            calendar.drawCalendar(
+                calendar.selectedDate.Month,
+                calendar.selectedDate.Year
+            );
+        });
+        </script>
+    </body>
+</html>
